@@ -13,9 +13,18 @@ bool glob(const char *pattern, const char *text)
             ++text;
         }
         break;
-        case '*':
-            assert(0 && "TODO: not implemented *");
-            break;
+        case '*': {
+            if (glob(pattern + 1, text))
+            {
+                return true;
+            }
+            else
+            {
+
+                ++text;
+            }
+        }
+        break;
         case '[':
             assert(0 && "TODO: not implemented [");
             break;
@@ -42,6 +51,11 @@ void check_glob(const char *pattern, const char *text)
     printf("%s <=> %s => %s\n", pattern, text, actual ? "true" : "false");
 }
 
+void new_line()
+{
+    printf("\n");
+}
+
 int main(void)
 {
     check_glob("main.?", "main.c");     // true
@@ -49,5 +63,9 @@ int main(void)
     check_glob("main.?", "main.cpp");   // false
     check_glob("main.???", "main.cpp"); // true
     check_glob("main.?", "main");       // false
+    new_line();
+    check_glob("*.cpp", "main.cpp"); // true
+    check_glob("*.cpp", "main.c");   // false
+    check_glob("main.*", "main.c");  // true
     return 0;
 }
