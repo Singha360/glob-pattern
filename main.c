@@ -44,6 +44,10 @@ void check_glob(const char *pattern, const char *text)
 
 int main(void)
 {
-    check_glob("main.?", "main.c");
+    check_glob("main.?", "main.c");     // true
+    check_glob("main.?", "main.h");     // true
+    check_glob("main.?", "main.cpp");   // false
+    check_glob("main.???", "main.cpp"); // true
+    check_glob("main.?", "main");       // false
     return 0;
 }
