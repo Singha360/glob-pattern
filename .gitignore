@@ -54,3 +54,6 @@ dkms.conf
 # Operating System Files
 .DS_Store
 .ini
+
+# Ignore produced binary
+main
