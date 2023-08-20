@@ -8,7 +8,7 @@ vars:
 tasks:
   build:
     cmds:
-      - clang -Wall -Wextra -o main {{.SRC_FILE}}
+      - clang -Wall -Wextra -ggdb -o main {{.SRC_FILE}}
     silent: true
   run:
     cmds:
