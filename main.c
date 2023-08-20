@@ -4,6 +4,8 @@
 
 bool glob(const char *pattern, const char *text)
 {
+    (void)pattern;
+    (void)text;
     assert(0 && "TODO: not implemented");
     return false;
 }
